@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+:root {
+  --text-color: #e1e1e1;
+  --dark-background-color: #222324;
+  --light-gray-color: #373737;
+  --red-accent-color: #c23b23;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+.dark-background {
+  background-color: var(--dark-background-color);
+}
+
+.login-form-dark-rounded-shadow {
+  background-color: var(--light-gray-color);
+  border-radius: 2rem;
+  box-shadow: 1rem 1rem .8rem #141414;
+}
+
+#welcome-text {
+  color: var(--text-color);
+  font-weight: 300;
+  text-align: center;
+}
+
+.inputField {
+  padding: 1rem;
+  width: 100%;
+
+  color: var(--text-color);
+  font-weight: bold;
+  background-color: var(--light-gray-color);
+  
+  border: 1px solid var(--light-gray-color);
+  border-bottom: 2px solid var(--dark-background-color);
+
+  transition: all .6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.inputField:focus {
+  padding: 1rem;
+  width: 100%;
+
+  color: var(--text-color);
+  font-weight: bold;
+  background-color: var(--light-gray-color);
+  
+  border: 1px solid var(--light-gray-color);
+  border-bottom: 2px solid var(--red-accent-color);
+}
+
+.loginButton {
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-weight: normal;
+  
+  height: 3.6rem;
+  border-radius: 1rem;
+  border: 2px solid var(--red-accent-color);
+
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.loginButton:hover {
+  background-color: var(--red-accent-color);
+}
