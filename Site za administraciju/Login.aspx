@@ -17,28 +17,28 @@
 					<div>
 						<h1 class="mt-4 mb-5 display-4" id="welcome-text">Dobrodošli natrag!</h1>
 					</div>
-					<div class="form-group w-50 my-5">
-						<input
-							type="text"
-							name="username"
-							id="txtUsername"
-							class="inputField"
-							placeholder="Korisničko ime"
-							required
-							autocomplete="off"
-							autofocus />
+					<div class="form-group w-50 mt-5 mb-3 d-flex flex-row">
+						<asp:TextBox ID="tbUsername" runat="server" CssClass="inputField span6" Placeholder="Korisničko ime" Autofocus="true"/>
+						<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+							ControlToValidate="tbUsername" 
+							Display="Dynamic" 
+							ForeColor="DarkRed" 
+							Font-Bold="True"
+							Font-Size="Large"
+							Text="*"/>
 					</div>
-					<div class="form-group w-50 mt-3 mb-4">
-						<input
-							type="password"
-							name="password"
-							id="txtPassword"
-							class="inputField"
-							placeholder="Zaporka"
-							required />
+					<div class="form-group w-50 mt-3 mb-4 d-flex flex-row">
+						<asp:TextBox ID="tbPassword" runat="server" CssClass="inputField span6" Placeholder="Zaporka" TextMode="Password"/>
+						<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+							ControlToValidate="tbPassword"
+							Display="Dynamic"
+							ForeColor="DarkRed"
+							Font-Bold="True"
+							Font-Size="Large"
+							Text="*" />
 					</div>
 					<div class="form-group w-50 my-5">
-						<input type="submit" value="Prijava" class="btn-block loginButton">
+						<asp:Button ID="btnLogin" runat="server" Text="Prijava" CssClass="btn-block loginButton" />
 					</div>
 				</div>
 			</div>
