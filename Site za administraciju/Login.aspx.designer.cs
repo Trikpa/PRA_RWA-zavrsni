@@ -24,6 +24,15 @@ namespace Site_za_administraciju
 		protected global::System.Web.UI.HtmlControls.HtmlForm loginForm;
 
 		/// <summary>
+		/// errorMessage control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label errorMessage;
+
+		/// <summary>
 		/// tbUsername control.
 		/// </summary>
 		/// <remarks>
@@ -58,6 +67,24 @@ namespace Site_za_administraciju
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+		/// <summary>
+		/// cbRememberMe control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox cbRememberMe;
+
+		/// <summary>
+		/// ddlOdabraniSite control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlOdabraniSite;
 
 		/// <summary>
 		/// btnLogin control.
