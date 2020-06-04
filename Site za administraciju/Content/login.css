@@ -5,16 +5,21 @@
   --dark-background-color: #222324;
   --light-gray-color: #373737;
   --red-accent-color: #c23b23;
+  --green-button-color: #63c93e;
 }
 
 html {
-  font-size: 62.5%;
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
 
-.dark-background {
-  background-color: var(--dark-background-color);
-}
+a, p, h1, h2, h3, h4, h5, h6 { font-family: "Roboto", sans-serif; }
+
+ul { font-weight: 300; }
+
+.dark-background { background-color: var(--dark-background-color); }
+
+.light-gray-background { background-color: var(--light-gray-color); }
 
 .login-form-dark-rounded-shadow {
   background-color: var(--light-gray-color);
@@ -33,6 +38,7 @@ html {
   width: 100%;
 
   color: var(--text-color);
+  font-size: .8rem;
   font-weight: bold;
   background-color: var(--light-gray-color);
   
@@ -57,10 +63,10 @@ html {
 .loginButton {
   background-color: transparent;
   color: var(--text-color);
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: normal;
   
-  height: 3.6rem;
+  height: 3rem;
   border-radius: 1rem;
   border: 2px solid var(--red-accent-color);
 
@@ -69,4 +75,49 @@ html {
 
 .loginButton:hover {
   background-color: var(--red-accent-color);
+}
+
+label[for=cbRememberMe] {
+	margin-left: 5px;
+	margin-bottom: 0;
+}
+
+span.form-check-input {
+	display: flex;
+	align-items: center;
+}
+
+.profile-picture {
+	width: 2em;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+	color: var(--text-color);
+	text-decoration: none;
+	background-color: var(--red-accent-color);
+}
+
+#wrapper #content-wrapper {
+	background-color: var(--light-gray-color);
+	width: 100%;
+	overflow-x: hidden
+}
+
+.btn-info {
+	font-weight: 600;
+	color: var(--light-gray-color);
+	background-color: var(--green-button-color);
+	border-color: #36b9cc
+}
+
+.btn-info.focus, .btn-info:focus, .btn-info:hover {
+	color: var(--light-gray-color);
+	background-color: #3c8f1e;
+	border-color: #2a96a5
+}
+
+.sidebar .nav-item .nav-link.active {
+	font-weight: 500;
+	border-left: 2px solid var(--red-accent-color);
+	color: var(--red-accent-color);
 }
