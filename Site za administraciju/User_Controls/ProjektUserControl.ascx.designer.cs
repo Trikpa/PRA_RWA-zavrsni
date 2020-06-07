@@ -11,48 +11,34 @@ namespace Site_za_administraciju
 {
 
 
-	public partial class Projekti
+	public partial class ProjektUserControl
 	{
 
 		/// <summary>
-		/// projectContainer control.
+		/// lblProjectTitle control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl projectContainer;
+		protected global::System.Web.UI.WebControls.Label lblProjectTitle;
 
 		/// <summary>
-		/// phProjects control.
+		/// lblProjectDescription control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.PlaceHolder phProjects;
+		protected global::System.Web.UI.WebControls.Label lblProjectDescription;
 
 		/// <summary>
-		/// btnDodaj control.
+		/// BtnDetalji control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnDodaj;
-
-		/// <summary>
-		/// Master property.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated property.
-		/// </remarks>
-		public new Site_za_administraciju.DashboardMasterPage Master
-		{
-			get
-			{
-				return ( (Site_za_administraciju.DashboardMasterPage)( base.Master ) );
-			}
-		}
+		protected global::System.Web.UI.WebControls.LinkButton BtnDetalji;
 	}
 }
