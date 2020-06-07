@@ -19,7 +19,7 @@ namespace Site_za_administraciju
 
 		protected void Page_Load( object sender, EventArgs e )
 		{
-
+			
 		}
 
 		protected void BtnLogin_Click( object sender, EventArgs e )
