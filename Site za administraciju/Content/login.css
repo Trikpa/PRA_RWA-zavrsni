@@ -6,6 +6,7 @@
   --light-gray-color: #373737;
   --red-accent-color: #c23b23;
   --green-button-color: #63c93e;
+  --orange-accent-color: #f39a27;
 }
 
 html {
@@ -20,6 +21,12 @@ ul { font-weight: 300; }
 .dark-background { background-color: var(--dark-background-color); }
 
 .light-gray-background { background-color: var(--light-gray-color); }
+
+.text-orange { color: var(--orange-accent-color); }
+
+.text-red { color: var(--red-accent-color); }
+
+.card { border: none; }
 
 .login-form-dark-rounded-shadow {
   background-color: var(--light-gray-color);
@@ -73,9 +80,7 @@ ul { font-weight: 300; }
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
 
-.loginButton:hover {
-  background-color: var(--red-accent-color);
-}
+.loginButton:hover { background-color: var(--red-accent-color); }
 
 label[for=cbRememberMe] {
 	margin-left: 5px;
@@ -87,9 +92,7 @@ span.form-check-input {
 	align-items: center;
 }
 
-.profile-picture {
-	width: 2em;
-}
+.profile-picture { width: 2em; }
 
 .dropdown-item:focus, .dropdown-item:hover {
 	color: var(--text-color);
@@ -120,4 +123,19 @@ span.form-check-input {
 	font-weight: 500;
 	border-left: 2px solid var(--red-accent-color);
 	color: var(--red-accent-color);
+}
+
+.btn-red {
+	color: var(--dark-background-color);
+	background-color: var(--red-accent-color);
+}
+
+.btn-red.focus, .btn-red:focus, .btn-red:hover {
+	color: #000;
+	background-color: #a3210a;
+	border-color: none;
+}
+
+.btn-red.focus, .btn-red:focus {
+	box-shadow: 0 0 0 .2rem rgba(105,136,228,.5)
 }
