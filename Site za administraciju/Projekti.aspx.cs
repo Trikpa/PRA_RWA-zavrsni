@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,31 +11,13 @@ namespace Site_za_administraciju
 	public partial class Projekti : System.Web.UI.Page
 	{
 		private Djelatnik djelatnik;
+		protected void OnPreLoad( object sender, EventArgs e )
+		{
+			
+		}
 		protected void Page_Load( object sender, EventArgs e )
 		{
-			djelatnik = Session["djelatnik"] as Djelatnik;
-			if ( djelatnik == null )
-				Response.Redirect("Login.aspx");
-
-			LoadUserProjects();
+			
 		}
-
-		private void LoadUserProjects()
-		{
-			phProjects.Controls.Clear();
-
-			int userID = djelatnik.IDDjelatnik;
-			IEnumerable<Projekt> projekti = Repozitorij.GetProjektiDjelatnika(userID);
-			foreach ( Projekt p in projekti )
-			{
-				ProjektUserControl puc = LoadControl("User_Controls/ProjektUserControl.ascx") as ProjektUserControl;
-				puc.ID = $"{p.IDProjekt}";
-				puc.SetInfo(p);
-
-				phProjects.Controls.Add(puc);
-			}
-		}
-
-		protected void BtnDodaj_Click( object sender, EventArgs e ) => Response.Redirect("DodajProjekt.aspx");
 	}
 }

@@ -22,37 +22,5 @@ namespace Site_za_administraciju
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.HtmlControls.HtmlGenericControl projectContainer;
-
-		/// <summary>
-		/// phProjects control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.PlaceHolder phProjects;
-
-		/// <summary>
-		/// btnDodaj control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnDodaj;
-
-		/// <summary>
-		/// Master property.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated property.
-		/// </remarks>
-		public new Site_za_administraciju.DashboardMasterPage Master
-		{
-			get
-			{
-				return ( (Site_za_administraciju.DashboardMasterPage)( base.Master ) );
-			}
-		}
 	}
 }
