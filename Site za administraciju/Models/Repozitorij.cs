@@ -205,5 +205,62 @@ namespace Site_za_administraciju.Models
 
 			return output == 1;
 		}
+
+		public static IEnumerable<Tim> GetTimovi()
+		{
+			var tblTimovi = SqlHelper.ExecuteDataset(cs, "DohvatiSveTimove").Tables[0];
+
+			foreach ( DataRow row in tblTimovi.Rows )
+				yield return new Tim
+				(
+					idTim: (int)row["IDTim"],
+					naziv: row["Naziv"].ToString(),
+					voditelj: GetDjelatnik( (int)row["VoditeljID"] )
+				);
+		}
+
+		public static Tim GetTim( int timID )
+		{
+			DataTable tblTim = SqlHelper.ExecuteDataset(cs, "DohvatiPodatkeOTimu", timID).Tables[0];
+
+			if ( tblTim.Rows.Count == 0 )
+				return null;
+
+			DataRow row = tblTim.Rows[0];
+			return new Tim
+			(
+				idTim: (int)row["IDTim"],
+				naziv: row["Naziv"].ToString(),
+				voditelj: GetDjelatnik((int)row["VoditeljID"])
+			);
+		}
+
+		public static bool UpdateTim( Tim t )
+		{
+			SqlParameter[] parameters = new SqlParameter[3];
+
+			parameters[0] = new SqlParameter("@IDTim", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = t.IDTim
+			};
+
+			parameters[1] = new SqlParameter("@Naziv", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = t.Naziv
+			};
+			
+			parameters[1] = new SqlParameter("@output", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Output
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "AzurirajTim", parameters);
+
+			int output = (int)parameters[4].Value;
+
+			return output == 1;
+		}
 	}
 }
