@@ -42,7 +42,6 @@ namespace Site_za_administraciju
 			p.DatumOtvaranja = DateTime.Parse(tbDatum.Text);
 			p.OpisProjekta = tbOpis.Text;
 
-
 			if ( Repozitorij.UpdateProjekt(p) )
 				btnPovratak.ForeColor = Color.Red;
 			else
