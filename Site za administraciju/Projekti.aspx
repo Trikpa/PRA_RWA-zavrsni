@@ -11,7 +11,7 @@
 			<asp:PlaceHolder ID="phProjects" runat="server"></asp:PlaceHolder>
 		</div>
 		<div class="col-md-6">
-			<asp:LinkButton ID="btnDodaj" runat="server" CssClass="btn btn-info" OnClick="BtnDodaj_Click"><i class="fas fa-plus">&nbsp;Dodaj</i></asp:LinkButton>
+			<asp:LinkButton ID="btnDodaj" runat="server" CssClass="btn btn-info" OnClick="BtnDodaj_Click"><i class="fas fa-plus">&nbsp;</i>Dodaj</asp:LinkButton>
 		</div>
 	</div>
 </asp:Content>

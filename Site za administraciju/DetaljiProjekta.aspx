@@ -82,11 +82,10 @@
 					<asp:LinkButton ID="btnUredi" runat="server" CssClass="btn btn-info" OnClick="BtnUredi_Click"><i class="fas fa-pen">&nbsp;Uredi</i></asp:LinkButton>
 				</div>
 				<div class="col-sm-3">
-					<asp:Button ID="btn" runat="server" CssClass="btn btn-info" OnClick="BtnSpremi_Click" Text="Spremi" />
-					<%--<asp:LinkButton ID="btnSpremi" runat="server" CssClass="btn btn-info" OnClick="BtnSpremi_Click"><i class="fas fa-save">&nbsp;Spremi</i></asp:LinkButton>--%>
+					<asp:LinkButton ID="btnSpremi" runat="server" CssClass="btn btn-info" OnClick="BtnSpremi_Click"><i class="fas fa-save">&nbsp;</i>Spremi</asp:LinkButton>
 				</div>
-				<div class="col-sm-3">
-					<asp:LinkButton ID="btnPovratak" runat="server" CssClass="btn btn-info" OnClick="BtnPovratak_Click"><i class="fas fa-chevron-left">&nbsp;Povratak</i></asp:LinkButton>
+				<div class="col-sm-4">
+					<asp:LinkButton ID="btnPovratak" runat="server" CssClass="btn btn-info" OnClick="BtnPovratak_Click"><i class="fas fa-chevron-left">&nbsp;</i>Povratak</asp:LinkButton>
 				</div>
 			</div>
 		</div>
