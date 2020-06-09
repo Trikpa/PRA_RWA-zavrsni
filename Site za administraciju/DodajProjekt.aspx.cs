@@ -12,7 +12,9 @@ namespace Site_za_administraciju
 	{
 		protected void Page_Load( object sender, EventArgs e )
 		{
-			LoadKlijentiDdl();
+			if (!IsPostBack)
+				LoadKlijentiDdl();
+
 		}
 
 		private void LoadKlijentiDdl()
