@@ -25,9 +25,8 @@ namespace Site_za_administraciju.Models
 		public DateTime DatumZaposlenja { get; set; }
 		public Tim Tim { get; set; } = null;
 
-		public Djelatnik( int idDjelatnik, string ime, string prezime, int tip, string email, DateTime datumZaposlenja, Tim tim )
+		public Djelatnik( string ime, string prezime, int tip, string email, DateTime datumZaposlenja, Tim tim )
 		{
-			IDDjelatnik = idDjelatnik;
 			Ime = ime;
 			Prezime = prezime;
 			Tip = (TipDjelatnika)tip;
@@ -35,6 +34,14 @@ namespace Site_za_administraciju.Models
 			DatumZaposlenja = datumZaposlenja;
 			Tim = tim;
 		}
+
+		public Djelatnik( string ime, string prezime, int tip, string email, string lozinka, DateTime datumZaposlenja, Tim tim )
+			: this(ime, prezime, tip, email, datumZaposlenja, tim)
+				=> Lozinka = lozinka;
+
+		public Djelatnik( int idDjelatnik, string ime, string prezime, int tip, string email, DateTime datumZaposlenja, Tim tim )
+			: this(ime, prezime, tip, email, datumZaposlenja, tim)
+				=> IDDjelatnik = idDjelatnik;
 
 		public Djelatnik( int idDjelatnik, string ime, string prezime, int tip, string email, string lozinka, DateTime datumZaposlenja, Tim tim )
 			: this(idDjelatnik, ime, prezime, tip, email, datumZaposlenja, tim)
