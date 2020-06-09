@@ -21,7 +21,8 @@ namespace Site_za_administraciju
 			{
 				int idProjekt = int.Parse(Request.QueryString["id"].ToString());
 				p = Repozitorij.GetProjekt(idProjekt);
-				FillForm();
+				if (!IsPostBack)
+					FillForm();
 			}
 		}
 
@@ -42,10 +43,7 @@ namespace Site_za_administraciju
 			p.DatumOtvaranja = DateTime.Parse(tbDatum.Text);
 			p.OpisProjekta = tbOpis.Text;
 
-			if ( Repozitorij.UpdateProjekt(p) )
-				btnPovratak.ForeColor = Color.Red;
-			else
-				btnPovratak.ForeColor = Color.White;
+			Repozitorij.UpdateProjekt(p);
 
 			ChangeTextBoxFieldsState(enabled: false);
 		}
