@@ -14,7 +14,6 @@ namespace Site_za_administraciju
 		{
 			if (!IsPostBack)
 				LoadKlijentiDdl();
-
 		}
 
 		private void LoadKlijentiDdl()
