@@ -87,7 +87,25 @@ namespace Site_za_administraciju.Models
 				tim: GetTim((int)row["TipID"])
 			);
 		}
-		
+
+		public static IEnumerable<Djelatnik> GetDjelatniciWithoutDirectors()
+		{
+			var tblDjelatnici = SqlHelper.ExecuteDataset(cs, "DohvatiSveDjelatnikeOsimDirektora").Tables[0];
+
+			foreach ( DataRow row in tblDjelatnici.Rows )
+				yield return new Djelatnik
+				(
+					idDjelatnik: (int)row["IDDjelatnik"],
+					ime: row["Ime"].ToString(),
+					prezime: row["Prezime"].ToString(),
+					tip: (int)row["TipID"],
+					email: row["Email"].ToString(),
+					datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
+					tim: GetTim((int)row["TipID"])
+				);
+		}
+
+
 		public static Klijent GetKlijent( int idKlijent )
 		{
 			DataTable tblKlijent = SqlHelper.ExecuteDataset(cs, "DohvatiKlijenta", idKlijent).Tables[0];
@@ -320,6 +338,113 @@ namespace Site_za_administraciju.Models
 			};
 
 			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "DodajNoviTim", parameters);
+		}
+
+		public static void AddNewDjelatnik( Djelatnik d )
+		{
+			SqlParameter[] parameters = new SqlParameter[8];
+
+			parameters[0] = new SqlParameter("@Ime", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Ime
+			};
+			
+			parameters[1] = new SqlParameter("@Prezime", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Prezime
+			};
+
+			parameters[2] = new SqlParameter("@TipID", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = (int)d.Tip
+			};
+
+			parameters[3] = new SqlParameter("@Email", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Email
+			};
+			
+			parameters[4] = new SqlParameter("@Lozinka", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Lozinka
+			};
+			
+			parameters[5] = new SqlParameter("@DatumZaposlenja", SqlDbType.Date)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.DatumZaposlenja.ToShortDateString()
+			};
+			
+			parameters[6] = new SqlParameter("@TimID", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Tim == null ? (object)DBNull.Value : d.Tim.IDTim
+			};
+			
+			parameters[7] = new SqlParameter("@output", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Output
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "DodajNovogDjelatnika", parameters);
+		}
+
+		public static bool UpdateDjelatnik( Djelatnik d )
+		{
+			SqlParameter[] parameters = new SqlParameter[7];
+
+			//@ID int, @Ime nvarchar(30), @Prezime nvarchar(30), @TipID int, @Email nvarchar(50), @TimID int, @output bit output
+			parameters[0] = new SqlParameter("@IDDjelatnik", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.IDDjelatnik
+			};
+
+			parameters[1] = new SqlParameter("@Ime", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Ime
+			};
+			
+			parameters[2] = new SqlParameter("@Prezime", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Prezime
+			};
+
+			parameters[3] = new SqlParameter("@TipID", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = (int)d.Tip
+			};
+			
+			parameters[4] = new SqlParameter("@Email", SqlDbType.NVarChar, 50)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Email
+			};
+
+			parameters[5] = new SqlParameter("@TimID", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Tim.IDTim
+			};
+
+			parameters[6] = new SqlParameter("@output", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Output
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "AzurirajDjelatnika", parameters);
+
+			int output = (int)parameters[6].Value;
+
+			return output == 1;
 		}
 	}
 }
