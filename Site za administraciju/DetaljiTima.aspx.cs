@@ -16,11 +16,12 @@ namespace Site_za_administraciju
 		{
 			if ( Request.QueryString["id"] == null || Session["djelatnik"] == null )
 				Response.Redirect("Timovi.aspx");
-			else if (!IsPostBack )
+			else
 			{
 				int timID = int.Parse(Request.QueryString["id"]);
 				t = Repozitorij.GetTim(timID);
-				FillForm();
+				if (!IsPostBack)
+					FillForm();
 			}
 		}
 
@@ -36,10 +37,7 @@ namespace Site_za_administraciju
 		{
 			t.Naziv = tbNaziv.Text;
 
-			if ( Repozitorij.UpdateTim(t) )
-				btnPovratak.ForeColor = Color.Red;
-			else
-				btnPovratak.ForeColor = Color.White;
+			Repozitorij.UpdateTim(t);
 
 			ChangeTextBoxFieldsState(enabled: false);
 		}
