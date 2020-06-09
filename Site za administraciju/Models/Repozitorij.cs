@@ -46,6 +46,27 @@ namespace Site_za_administraciju.Models
 			return null;
 		}
 
+		public static Djelatnik GetDjelatnik( int idDjelatnik, Tim tim )
+		{
+			DataTable tblDjelatnik = SqlHelper.ExecuteDataset(cs, "DohvatiPodatkeODjelatniku", idDjelatnik).Tables[0];
+
+			if ( tblDjelatnik.Rows.Count == 0 )
+				return null;
+
+			DataRow row = tblDjelatnik.Rows[0];
+			return new Djelatnik
+			(
+				idDjelatnik: (int)row["IDDjelatnik"],
+				ime: row["Ime"].ToString(),
+				prezime: row["Prezime"].ToString(),
+				tip: (int)row["TipID"],
+				email: row["Email"].ToString(),
+				lozinka: row["Lozinka"].ToString(),
+				datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
+				tim: tim ?? GetTim((int)row["TipID"])
+			);
+		}
+		
 		public static Djelatnik GetDjelatnik( int idDjelatnik )
 		{
 			DataTable tblDjelatnik = SqlHelper.ExecuteDataset(cs, "DohvatiPodatkeODjelatniku", idDjelatnik).Tables[0];
@@ -63,7 +84,7 @@ namespace Site_za_administraciju.Models
 				email: row["Email"].ToString(),
 				lozinka: row["Lozinka"].ToString(),
 				datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
-				tim: row["Tim"].ToString()
+				tim: GetTim((int)row["TipID"])
 			);
 		}
 		
@@ -227,12 +248,14 @@ namespace Site_za_administraciju.Models
 				return null;
 
 			DataRow row = tblTim.Rows[0];
-			return new Tim
-			(
-				idTim: (int)row["IDTim"],
-				naziv: row["Naziv"].ToString(),
-				voditelj: GetDjelatnik((int)row["VoditeljID"])
-			);
+			Tim tim = new Tim
+			{
+				IDTim = (int)row["IDTim"],
+				Naziv = row["Naziv"].ToString()
+			};
+			tim.Voditelj = GetDjelatnik((int)row["VoditeljID"], tim);
+
+			return tim;
 		}
 
 		public static bool UpdateTim( Tim t )
@@ -251,16 +274,52 @@ namespace Site_za_administraciju.Models
 				Value = t.Naziv
 			};
 			
-			parameters[1] = new SqlParameter("@output", SqlDbType.Int)
+			parameters[2] = new SqlParameter("@output", SqlDbType.Int)
 			{
 				Direction = ParameterDirection.Output
 			};
 
 			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "AzurirajTim", parameters);
 
-			int output = (int)parameters[4].Value;
+			int output = (int)parameters[2].Value;
 
 			return output == 1;
+		}
+
+		public static IEnumerable<Djelatnik> GetDjelatniciThatDontHaveATeam()
+		{
+			var tblDjelatnici = SqlHelper.ExecuteDataset(cs, "[DohvatiDjelatnikeKojiNePripadajuTimu]").Tables[0];
+
+			foreach ( DataRow row in tblDjelatnici.Rows )
+				yield return new Djelatnik
+				(
+					idDjelatnik: (int)row["IDDjelatnik"],
+					ime: row["Ime"].ToString(),
+					prezime: row["Prezime"].ToString(),
+					tip: (int)row["TipID"],
+					email: row["Email"].ToString(),
+					datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
+					tim: null
+				);
+		}
+
+		public static void AddNewTim( Tim t )
+		{
+			SqlParameter[] parameters = new SqlParameter[2];
+
+			parameters[0] = new SqlParameter("@Naziv", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = t.Naziv
+			};
+
+			parameters[1] = new SqlParameter("@VoditeljID", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = t.Voditelj.IDDjelatnik
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "DodajNoviTim", parameters);
 		}
 	}
 }

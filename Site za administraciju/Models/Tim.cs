@@ -11,12 +11,16 @@ namespace Site_za_administraciju.Models
 		public string Naziv { get; set; }
 		public Djelatnik Voditelj { get; set; }
 
-		public Tim( int idTim, string naziv, Djelatnik voditelj )
+		public Tim() { }
+		public Tim( string naziv, Djelatnik voditelj )
 		{
-			IDTim = idTim;
 			Naziv = naziv;
 			Voditelj = voditelj;
 		}
+
+		public Tim( int idTim, string naziv, Djelatnik voditelj )
+			:this(naziv, voditelj)
+				=> IDTim = idTim;
 
 		public override string ToString() => Naziv;
 	}
