@@ -26,5 +26,7 @@ namespace Site_za_administraciju.Models
 		public Projekt( int idProjekt, string naziv, DateTime datumOtvaranja, Djelatnik voditelj, Klijent klijent, string opisProjekta )
 			: this(naziv, datumOtvaranja, voditelj, klijent, opisProjekta)
 			=> IDProjekt = idProjekt;
+
+		public override string ToString() => $"{Naziv} ({Klijent.Naziv})";
 	}
 }
