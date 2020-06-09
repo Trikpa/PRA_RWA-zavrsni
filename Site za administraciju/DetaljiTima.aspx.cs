@@ -15,12 +15,13 @@ namespace Site_za_administraciju
 		protected void Page_Load( object sender, EventArgs e )
 		{
 			if ( Request.QueryString["id"] == null || Session["djelatnik"] == null )
-				Response.Redirect("Timovi.aspx");
+				Response.Redirect("Login.aspx");
 			else
 			{
 				int timID = int.Parse(Request.QueryString["id"]);
 				t = Repozitorij.GetTim(timID);
-				if (!IsPostBack)
+
+				if ( !IsPostBack )
 					FillForm();
 			}
 		}
