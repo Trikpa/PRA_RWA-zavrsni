@@ -16,7 +16,7 @@ namespace Site_za_administraciju
 		{
 			if ( Request.QueryString["id"] == null || Session["djelatnik"] == null )
 				Response.Redirect("Timovi.aspx");
-			else
+			else if (!IsPostBack )
 			{
 				int timID = int.Parse(Request.QueryString["id"]);
 				t = Repozitorij.GetTim(timID);
