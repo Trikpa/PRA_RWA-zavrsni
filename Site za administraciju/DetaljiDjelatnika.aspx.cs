@@ -21,6 +21,7 @@ namespace Site_za_administraciju
 				d = Repozitorij.GetDjelatnik(djelatnikID);
 				if ( !IsPostBack )
 					FillForm();
+				LoadProjektiDjelatnika();
 			}
 		}
 
@@ -37,6 +38,18 @@ namespace Site_za_administraciju
 
 			LoadDdlTimovi();
 			ddlTim.SelectedValue = d.Tim.IDTim.ToString();
+		}
+
+		private void LoadProjektiDjelatnika()
+		{
+			IEnumerable<Projekt> projektiDjelatnika = Repozitorij.GetProjektiDjelatnika(d.IDDjelatnik);
+			foreach ( Projekt projekt in projektiDjelatnika )
+			{
+				ProjektUserControl puc = LoadControl("User_Controls/ProjektUserControl.ascx") as ProjektUserControl;
+				puc.ID = $"{projekt.IDProjekt}";
+				puc.SetInfo(projekt);
+				phProjektiDjelatnika.Controls.Add(puc);
+			}
 		}
 
 		private void LoadDdlTimovi()

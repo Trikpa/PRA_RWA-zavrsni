@@ -81,6 +81,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6"></div>
+		<div class="col-md-6 mt-2">
+			<h5 class="text-white mb-4">Projekti na kojima radi</h5>
+			<asp:PlaceHolder runat="server" ID="phProjektiDjelatnika" />
+		</div>
 	</div>
 </asp:Content>
