@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using Microsoft.ApplicationBlocks.Data;
@@ -105,7 +106,6 @@ namespace Site_za_administraciju.Models
 				);
 		}
 
-
 		public static Klijent GetKlijent( int idKlijent )
 		{
 			DataTable tblKlijent = SqlHelper.ExecuteDataset(cs, "DohvatiKlijenta", idKlijent).Tables[0];
@@ -117,7 +117,9 @@ namespace Site_za_administraciju.Models
 			return new Klijent
 			(
 				idKlijent: (int)row["IDKlijent"],
-				naziv: row["Naziv"].ToString()
+				naziv: row["Naziv"].ToString(),
+				telefon: row["Telefon"].ToString(),
+				email: row["Email"].ToString()
 			);
 		}
 
@@ -136,7 +138,21 @@ namespace Site_za_administraciju.Models
 					opisProjekta:  row["OpisProjekta"].ToString()
 				);
 		}
+		public static IEnumerable<Projekt> GetProjektiKlijenta( Klijent k )
+		{
+			var tblProjekti = SqlHelper.ExecuteDataset(cs, "DohvatiProjekteNaKojimaDjelatnikMozeRaditi", k.IDKlijent).Tables[0];
 
+			foreach ( DataRow row in tblProjekti.Rows )
+				yield return new Projekt
+				(
+					idProjekt: (int)row["IDProjekt"],
+					naziv: row["Naziv"].ToString(),
+					datumOtvaranja: DateTime.Parse(row["DatumOtvaranja"].ToString()),
+					voditelj: GetDjelatnik((int)row["VoditeljID"]),
+					klijent: k,
+					opisProjekta: row["OpisProjekta"].ToString()
+				);
+		}
 		public static IEnumerable<Klijent> GetKlijenti()
 		{
 			var tblKlijenti = SqlHelper.ExecuteDataset(cs, "DohvatiSveKlijente").Tables[0];
@@ -145,8 +161,49 @@ namespace Site_za_administraciju.Models
 				yield return new Klijent
 				(
 					idKlijent: (int)row["IDKlijent"],
-					naziv: row["Naziv"].ToString()
+					naziv: row["Naziv"].ToString(),
+					telefon: row["Telefon"].ToString(),
+					email: row["Email"].ToString()
 				);
+		}
+		public static bool UpdateKlijent( Klijent k )
+		{
+			SqlParameter[] parameters = new SqlParameter[5];
+
+			parameters[0] = new SqlParameter("@IDKlijent", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.IDKlijent
+			};
+
+			parameters[1] = new SqlParameter("@Naziv", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.Naziv
+			};
+
+			parameters[2] = new SqlParameter("@Telefon", SqlDbType.NVarChar, 15)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.Telefon
+			};
+
+			parameters[3] = new SqlParameter("@Email", SqlDbType.NVarChar, 25)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.Email
+			};
+
+			parameters[4] = new SqlParameter("@output", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Output
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "AzurirajKlijenta", parameters);
+
+			int output = (int)parameters[4].Value;
+
+			return output == 1;
 		}
 
 		public static void AddNewProjekt(Projekt p)
@@ -261,6 +318,24 @@ namespace Site_za_administraciju.Models
 		public static Tim GetTim( int timID )
 		{
 			DataTable tblTim = SqlHelper.ExecuteDataset(cs, "DohvatiPodatkeOTimu", timID).Tables[0];
+
+			if ( tblTim.Rows.Count == 0 )
+				return null;
+
+			DataRow row = tblTim.Rows[0];
+			Tim tim = new Tim
+			{
+				IDTim = (int)row["IDTim"],
+				Naziv = row["Naziv"].ToString()
+			};
+			tim.Voditelj = GetDjelatnik((int)row["VoditeljID"], tim);
+
+			return tim;
+		}
+		
+		public static Tim GetTimDjelatnika( int djelatnikID )
+		{
+			DataTable tblTim = SqlHelper.ExecuteDataset(cs, "DohvatiPodatkeOTimuDjelatnika", djelatnikID).Tables[0];
 
 			if ( tblTim.Rows.Count == 0 )
 				return null;
