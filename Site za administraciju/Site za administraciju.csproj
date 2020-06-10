@@ -88,6 +88,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\login.css" />
     <Content Include="DetaljiDjelatnika.aspx" />
+    <Content Include="DetaljiKlijenta.aspx" />
     <Content Include="DetaljiProjekta.aspx" />
     <Content Include="DetaljiTima.aspx" />
     <Content Include="Djelatnici.aspx" />
@@ -95,11 +96,15 @@
     <Content Include="DodajProjekt.aspx" />
     <Content Include="DodajTim.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Klijenti.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MojTim.aspx" />
+    <Content Include="Profil.aspx" />
     <Content Include="Projekti.aspx" />
+    <Content Include="PromijeniSifru.aspx" />
     <Content Include="Timovi.aspx" />
     <Content Include="User_Controls\DjelatnikUserControl.ascx" />
+    <Content Include="User_Controls\KlijentUserControl.ascx" />
     <Content Include="User_Controls\ProjektUserControl.ascx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -246,6 +251,13 @@
     <Compile Include="DetaljiDjelatnika.aspx.designer.cs">
       <DependentUpon>DetaljiDjelatnika.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetaljiKlijenta.aspx.cs">
+      <DependentUpon>DetaljiKlijenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetaljiKlijenta.aspx.designer.cs">
+      <DependentUpon>DetaljiKlijenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DetaljiProjekta.aspx.cs">
       <DependentUpon>DetaljiProjekta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +303,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Klijenti.aspx.cs">
+      <DependentUpon>Klijenti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klijenti.aspx.designer.cs">
+      <DependentUpon>Klijenti.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -310,12 +329,26 @@
     <Compile Include="MojTim.aspx.designer.cs">
       <DependentUpon>MojTim.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Profil.aspx.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profil.aspx.designer.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Projekti.aspx.cs">
       <DependentUpon>Projekti.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Projekti.aspx.designer.cs">
       <DependentUpon>Projekti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PromijeniSifru.aspx.cs">
+      <DependentUpon>PromijeniSifru.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PromijeniSifru.aspx.designer.cs">
+      <DependentUpon>PromijeniSifru.aspx</DependentUpon>
     </Compile>
     <Compile Include="Timovi.aspx.cs">
       <DependentUpon>Timovi.aspx</DependentUpon>
@@ -330,6 +363,13 @@
     </Compile>
     <Compile Include="User_Controls\DjelatnikUserControl.ascx.designer.cs">
       <DependentUpon>DjelatnikUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\KlijentUserControl.ascx.cs">
+      <DependentUpon>KlijentUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Controls\KlijentUserControl.ascx.designer.cs">
+      <DependentUpon>KlijentUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\ProjektUserControl.ascx.cs">
       <DependentUpon>ProjektUserControl.ascx</DependentUpon>
