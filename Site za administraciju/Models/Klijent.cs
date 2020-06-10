@@ -9,12 +9,19 @@ namespace Site_za_administraciju.Models
 	{
 		public int IDKlijent { get; set; }
 		public string Naziv { get; set; }
+		public string Telefon { get; set; }
+		public string Email { get; set; }
 
-		public Klijent( int idKlijent, string naziv )
+		public Klijent( string naziv, string telefon, string email )
 		{
-			IDKlijent = idKlijent;
 			Naziv = naziv;
+			Telefon = telefon;
+			Email = email;
 		}
+
+		public Klijent( int idKlijent, string naziv, string telefon, string email )
+			: this(naziv, telefon, email)
+				=> IDKlijent = idKlijent;
 
 		public override string ToString() => Naziv;
 	}
