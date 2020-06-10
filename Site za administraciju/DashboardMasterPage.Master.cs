@@ -61,5 +61,7 @@ namespace Site_za_administraciju
 			ViewState.Clear();
 			Response.Redirect("Login.aspx");
 		}
+
+		protected void BtnProfil_Click( object sender, EventArgs e ) => Response.Redirect("Profil.aspx");
 	}
 }

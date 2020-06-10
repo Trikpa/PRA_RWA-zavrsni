@@ -71,7 +71,7 @@
 										<div
 											class="dropdown-menu shadow dark-background dropdown-menu-right animated--grow-in"
 											role="menu">
-											<asp:LinkButton runat="server" CssClass="dropdown-item" ID="LinkButton1" OnClick="BtnLogout_Click">
+											<asp:LinkButton runat="server" CssClass="dropdown-item" ID="btnProfil" OnClick="BtnProfil_Click">
 												<i class="fas fa-user fa-sm fa-fw mr-2 text-white">&nbsp;</i>
 												<span class="text-white">Profil</span>
 											</asp:LinkButton>
