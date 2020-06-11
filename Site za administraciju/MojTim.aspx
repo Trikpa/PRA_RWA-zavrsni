@@ -5,5 +5,11 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
-
+	<div class="row">
+		<div class="col-md-6" runat="server" id="projectContainer">
+			<asp:PlaceHolder ID="phMojTim" runat="server"></asp:PlaceHolder>
+		</div>
+		<div class="col-md-6">
+		</div>
+	</div>
 </asp:Content>
