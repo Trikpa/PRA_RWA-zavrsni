@@ -521,5 +521,49 @@ namespace Site_za_administraciju.Models
 
 			return output == 1;
 		}
+
+		public static bool ChangeDjelatnikPassword( Djelatnik d )
+		{
+			SqlParameter[] parameters = new SqlParameter[3];
+
+			parameters[0] = new SqlParameter("@IDDjelatnik", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.IDDjelatnik
+			};
+
+			parameters[1] = new SqlParameter("@NovaLozinka", SqlDbType.NVarChar, 50)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.Lozinka
+			};
+
+			parameters[2] = new SqlParameter("@output", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Output
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "AzurirajLozinku", parameters);
+
+			int output = (int)parameters[2].Value;
+
+			return output == 1;
+		}
+		public static IEnumerable<Djelatnik> GetDjelatniciTima( Tim t )
+		{
+			var tblDjelatnici = SqlHelper.ExecuteDataset(cs, "DohvatiSveDjelatnikeIzTima", t.IDTim).Tables[0];
+
+			foreach ( DataRow row in tblDjelatnici.Rows )
+				yield return new Djelatnik
+				(
+					idDjelatnik: (int)row["IDDjelatnik"],
+					ime: row["Ime"].ToString(),
+					prezime: row["Prezime"].ToString(),
+					tip: (int)row["TipID"],
+					email: row["Email"].ToString(),
+					datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
+					tim: t
+				);
+		}
 	}
 }
