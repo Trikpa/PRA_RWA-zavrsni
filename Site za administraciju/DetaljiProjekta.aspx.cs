@@ -23,6 +23,7 @@ namespace Site_za_administraciju
 				p = Repozitorij.GetProjekt(idProjekt);
 				if (!IsPostBack)
 					FillForm();
+				LoadDjelatniciOnProjekt();
 			}
 		}
 
@@ -33,6 +34,18 @@ namespace Site_za_administraciju
 			tbVoditelj.Text = p.Voditelj.ToString();
 			tbKlijent.Text = p.Klijent.ToString();
 			tbOpis.Text = p.OpisProjekta;
+		}
+
+		private void LoadDjelatniciOnProjekt()
+		{
+			IEnumerable<Djelatnik> djelatniciTima = Repozitorij.GetDjelatniciThatWorkOnProjekt(p);
+			foreach ( Djelatnik djelatnik in djelatniciTima )
+			{
+				DjelatnikUserControl puc = LoadControl("User_Controls/DjelatnikUserControl.ascx") as DjelatnikUserControl;
+				puc.ID = $"{djelatnik.IDDjelatnik}";
+				puc.SetInfo(djelatnik);
+				phDjelatniciNaProjektu.Controls.Add(puc);
+			}	
 		}
 
 		protected void BtnSpremi_Click( object sender, EventArgs e ) => UpdateProjekt();

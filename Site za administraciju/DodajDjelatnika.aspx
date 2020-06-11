@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
 	<div class="row">
-		<div class="col-md-6 mt-4">
+		<div class="col-md-6 mt-4 dark-background rounded mb-3">
 			<div class="form-group row my-4">
 				<label for="tbIme" class="col-sm-2 col-form-label text-red">Ime</label>
 				<div class="col-sm-9">

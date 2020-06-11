@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
 	<div class="row">
-		<div class="col-md-6 mt-4">
+		<div class="col-md-6 mt-4 dark-background rounded mb-3">
 			<div class="form-group row my-4">
 				<label for="tbNaziv" class="col-sm-2 col-form-label text-red">Naziv</label>
 				<div class="col-sm-9">
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 mt-2">
+		<div class="col-md-6 mt-n4">
 			<h5 class="text-white mb-4">Projekti klijenta</h5>
 			<asp:PlaceHolder runat="server" ID="phProjektiKlijenta" />
 		</div>

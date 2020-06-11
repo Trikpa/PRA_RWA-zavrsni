@@ -23,6 +23,7 @@ namespace Site_za_administraciju
 
 				if ( !IsPostBack )
 					FillForm();
+				LoadClanoviTima();
 			}
 		}
 
@@ -30,6 +31,18 @@ namespace Site_za_administraciju
 		{
 			tbNaziv.Text = t.Naziv;
 			tbVoditelj.Text = t.Voditelj.ToString();
+		}
+
+		private void LoadClanoviTima()
+		{
+			IEnumerable<Djelatnik> djelatniciTima = Repozitorij.GetDjelatniciTima(t);
+			foreach ( Djelatnik djelatnik in djelatniciTima )
+			{
+				DjelatnikUserControl puc = LoadControl("User_Controls/DjelatnikUserControl.ascx") as DjelatnikUserControl;
+				puc.ID = $"{djelatnik.IDDjelatnik}";
+				puc.SetInfo(djelatnik);
+				phClanoviTima.Controls.Add(puc);
+			}
 		}
 
 		protected void BtnSpremi_Click( object sender, EventArgs e ) => UpdateProjekt();
