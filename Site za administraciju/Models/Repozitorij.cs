@@ -7,7 +7,6 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using Microsoft.ApplicationBlocks.Data;
-using Utilities;
 
 namespace Site_za_administraciju.Models
 {
@@ -37,7 +36,7 @@ namespace Site_za_administraciju.Models
 				Direction = ParameterDirection.Output
 			};
 
-			Ds = SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "ProvjeriKorisnickoImeIZaporku", parameters);
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "ProvjeriKorisnickoImeIZaporku", parameters);
 
 			int idDjelatnik = (int)parameters[2].Value;
 
@@ -92,6 +91,22 @@ namespace Site_za_administraciju.Models
 		public static IEnumerable<Djelatnik> GetDjelatniciWithoutDirectors()
 		{
 			var tblDjelatnici = SqlHelper.ExecuteDataset(cs, "DohvatiSveDjelatnikeOsimDirektora").Tables[0];
+
+			foreach ( DataRow row in tblDjelatnici.Rows )
+				yield return new Djelatnik
+				(
+					idDjelatnik: (int)row["IDDjelatnik"],
+					ime: row["Ime"].ToString(),
+					prezime: row["Prezime"].ToString(),
+					tip: (int)row["TipID"],
+					email: row["Email"].ToString(),
+					datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
+					tim: GetTim((int)row["TipID"])
+				);
+		}
+		public static IEnumerable<Djelatnik> GetDjelatniciThatWorkOnProjekt( Projekt p )
+		{
+			var tblDjelatnici = SqlHelper.ExecuteDataset(cs, "DohvatiDjelatnikeKojiRadeNaProjektu", p.IDProjekt).Tables[0];
 
 			foreach ( DataRow row in tblDjelatnici.Rows )
 				yield return new Djelatnik
