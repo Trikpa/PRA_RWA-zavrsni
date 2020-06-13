@@ -99,7 +99,6 @@
 		</div>
 		<script src="Scripts/jquery-3.0.0.min.js"></script>
 		<script src="Scripts/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 		<script src="Scripts/theme.js"></script>
     </form>
 </body>
