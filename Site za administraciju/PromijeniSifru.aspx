@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
-	<div class="form-group row my-4 dark-background rounded mb-3">
+	<div class="form-group row my-4">
 		<label for="tbTrenutnaLozinka" class="col-sm-3 col-form-label text-red">Trenutna lozinka</label>
 		<div class="col-sm-5  d-flex align-items-center">
 			<asp:TextBox ID="tbTrenutnaLozinka" runat="server" AutoCompleteType="None" TextMode="Password" CssClass="form-control"></asp:TextBox>
