@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Site_za_administraciju.Models;
 
 namespace Site_za_evidenciju_radnih_sati.Controllers
 {
@@ -10,21 +11,18 @@ namespace Site_za_evidenciju_radnih_sati.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
-		}
+            return View();
+        }
+		//private void CreateEmailPasswordCookies()
+		//{
+		//	HttpCookie emailCookie = new HttpCookie("email", email);
+		//	HttpCookie passwordCookie = new HttpCookie("password", password);
 
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
+		//	emailCookie.Expires = DateTime.Now.AddMinutes(30);
+		//	passwordCookie.Expires = DateTime.Now.AddMinutes(30);
 
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
-			return View();
-		}
+		//	Response.AppendCookie(emailCookie);
+		//	Response.AppendCookie(passwordCookie);
+		//}
 	}
 }

@@ -23,8 +23,8 @@ namespace Site_za_evidenciju_radnih_sati
 					  "~/Scripts/bootstrap.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
-					  "~/Content/bootstrap.css",
-					  "~/Content/site.css"));
+					  "~/Content/bootstrap.min.css",
+					  "~/Content/login.css"));
 		}
 	}
 }

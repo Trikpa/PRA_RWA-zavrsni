@@ -15,8 +15,26 @@ namespace Site_za_evidenciju_radnih_sati
 
 			routes.MapRoute(
 				name: "Default",
-				url: "{controller}/{action}/{id}",
-				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+				url: "",
+				defaults: new { controller = "Login", action = "Index" }
+			);
+			
+			routes.MapRoute(
+				name: "Home",
+				url: "{controller}",
+				defaults: new { controller = "Home", action = "Index" }
+			);
+			
+			routes.MapRoute(
+				name: "PregledRada",
+				url: "{controller}/",
+				defaults: new { controller = "PregledRada", action = "Index" }
+			);
+			
+			routes.MapRoute(
+				name: "PotvrdaSatnica",
+				url: "{controller}/",
+				defaults: new { controller = "PotvrdaSatnica", action = "Index" }
 			);
 		}
 	}
