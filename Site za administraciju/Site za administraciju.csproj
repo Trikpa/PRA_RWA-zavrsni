@@ -93,6 +93,7 @@
     <Content Include="DetaljiTima.aspx" />
     <Content Include="Djelatnici.aspx" />
     <Content Include="DodajDjelatnika.aspx" />
+    <Content Include="DodajKlijenta.aspx" />
     <Content Include="DodajProjekt.aspx" />
     <Content Include="DodajTim.aspx" />
     <Content Include="Global.asax" />
@@ -285,6 +286,13 @@
     </Compile>
     <Compile Include="DodajDjelatnika.aspx.designer.cs">
       <DependentUpon>DodajDjelatnika.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DodajKlijenta.aspx.cs">
+      <DependentUpon>DodajKlijenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DodajKlijenta.aspx.designer.cs">
+      <DependentUpon>DodajKlijenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="DodajProjekt.aspx.cs">
       <DependentUpon>DodajProjekt.aspx</DependentUpon>
