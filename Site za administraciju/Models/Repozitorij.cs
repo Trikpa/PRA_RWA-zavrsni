@@ -155,7 +155,7 @@ namespace Site_za_administraciju.Models
 		}
 		public static IEnumerable<Projekt> GetProjektiKlijenta( Klijent k )
 		{
-			var tblProjekti = SqlHelper.ExecuteDataset(cs, "DohvatiProjekteNaKojimaDjelatnikMozeRaditi", k.IDKlijent).Tables[0];
+			var tblProjekti = SqlHelper.ExecuteDataset(cs, "DohvatiProjekteKlijenta", k.IDKlijent).Tables[0];
 
 			foreach ( DataRow row in tblProjekti.Rows )
 				yield return new Projekt
@@ -219,6 +219,30 @@ namespace Site_za_administraciju.Models
 			int output = (int)parameters[4].Value;
 
 			return output == 1;
+		}
+		public static void AddNewKlijent( Klijent k )
+		{
+			SqlParameter[] parameters = new SqlParameter[3];
+
+			parameters[0] = new SqlParameter("@Naziv", SqlDbType.NVarChar, 30)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.Naziv
+			};
+
+			parameters[1] = new SqlParameter("@Telefon", SqlDbType.NVarChar, 15)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.Telefon
+			};
+
+			parameters[2] = new SqlParameter("@Email", SqlDbType.NVarChar, 25)
+			{
+				Direction = ParameterDirection.Input,
+				Value = k.Email
+			};
+
+			SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure, "DodajNovogKlijenta", parameters);
 		}
 
 		public static void AddNewProjekt(Projekt p)
