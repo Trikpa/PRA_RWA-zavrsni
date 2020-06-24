@@ -69,7 +69,6 @@
 			</div>
 		</div>
 		<div class="col-md-6" runat="server" visible="false" id="passwordChangeContainer">
-			
 		</div>
 	</div>
 </asp:Content>

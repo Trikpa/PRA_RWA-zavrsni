@@ -11,17 +11,17 @@ namespace Site_za_administraciju
 {
 
 
-	public partial class DodajDjelatnika
+	public partial class DodajKlijenta
 	{
 
 		/// <summary>
-		/// tbIme control.
+		/// tbNaziv control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox tbIme;
+		protected global::System.Web.UI.WebControls.TextBox tbNaziv;
 
 		/// <summary>
 		/// RequiredFieldValidator1 control.
@@ -33,13 +33,13 @@ namespace Site_za_administraciju
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
 		/// <summary>
-		/// tbPrezime control.
+		/// tbTelefon control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox tbPrezime;
+		protected global::System.Web.UI.WebControls.TextBox tbTelefon;
 
 		/// <summary>
 		/// RequiredFieldValidator2 control.
@@ -49,24 +49,6 @@ namespace Site_za_administraciju
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-		/// <summary>
-		/// ddlTip control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList ddlTip;
-
-		/// <summary>
-		/// RequiredFieldValidator3 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
 		/// <summary>
 		/// tbEmail control.
@@ -85,33 +67,6 @@ namespace Site_za_administraciju
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-
-		/// <summary>
-		/// tbLozinka control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox tbLozinka;
-
-		/// <summary>
-		/// RequiredFieldValidator5 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
-
-		/// <summary>
-		/// ddlTimovi control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList ddlTimovi;
 
 		/// <summary>
 		/// BtnDodaj control.

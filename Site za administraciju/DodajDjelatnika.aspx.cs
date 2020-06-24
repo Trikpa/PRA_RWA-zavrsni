@@ -88,5 +88,7 @@ namespace Site_za_administraciju
 
 			Repozitorij.AddNewDjelatnik(d);
 		}
+
+		protected void BtnPovratak_Click( object sender, EventArgs e ) => Response.Redirect("Djelatnici.aspx");
 	}
 }

@@ -86,8 +86,11 @@
 				</div>
 			</div>
 			<div class="form-group row my-4">
-				<div class="col-sm-10">
+				<div class="col-sm-4">
 					<asp:LinkButton ID="BtnDodaj" runat="server" CssClass="btn btn-info" OnClick="BtnDodaj_Click"><i class="fas fa-plus">&nbsp;Dodaj</i></asp:LinkButton>
+				</div>
+				<div class="col-sm-4">
+					<asp:LinkButton ID="BtnPovratak" runat="server" CssClass="btn btn-secondary" OnClick="BtnPovratak_Click" CausesValidation="false"><i class="fa fa-chevron-left">&nbsp;Odustani</i></asp:LinkButton>
 				</div>
 			</div>
 		</div>

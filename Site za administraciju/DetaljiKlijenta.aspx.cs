@@ -30,9 +30,7 @@ namespace Site_za_administraciju
 		{
 			tbNaziv.Text = k.Naziv;
 			tbTelefon.Text = k.Telefon;
-			tbEmail.Text = k.Email;
-
-			
+			tbEmail.Text = k.Email;	
 		}
 
 		private void LoadProjektiKlijenta()
