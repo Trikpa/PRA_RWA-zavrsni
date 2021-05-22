@@ -87,9 +87,26 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\login.css" />
+    <Content Include="DetaljiDjelatnika.aspx" />
+    <Content Include="DetaljiKlijenta.aspx" />
+    <Content Include="DetaljiProjekta.aspx" />
+    <Content Include="DetaljiTima.aspx" />
+    <Content Include="Djelatnici.aspx" />
+    <Content Include="DodajDjelatnika.aspx" />
+    <Content Include="DodajKlijenta.aspx" />
+    <Content Include="DodajProjekt.aspx" />
+    <Content Include="DodajTim.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Klijenti.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MojTim.aspx" />
+    <Content Include="Profil.aspx" />
     <Content Include="Projekti.aspx" />
+    <Content Include="PromijeniSifru.aspx" />
+    <Content Include="Timovi.aspx" />
+    <Content Include="User_Controls\DjelatnikUserControl.ascx" />
+    <Content Include="User_Controls\KlijentUserControl.ascx" />
+    <Content Include="User_Controls\ProjektUserControl.ascx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -207,6 +224,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="User_Controls\TimUserControl.ascx" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -227,8 +245,78 @@
     <Compile Include="DashboardMasterPage.Master.designer.cs">
       <DependentUpon>DashboardMasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="DetaljiDjelatnika.aspx.cs">
+      <DependentUpon>DetaljiDjelatnika.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetaljiDjelatnika.aspx.designer.cs">
+      <DependentUpon>DetaljiDjelatnika.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetaljiKlijenta.aspx.cs">
+      <DependentUpon>DetaljiKlijenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetaljiKlijenta.aspx.designer.cs">
+      <DependentUpon>DetaljiKlijenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetaljiProjekta.aspx.cs">
+      <DependentUpon>DetaljiProjekta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetaljiProjekta.aspx.designer.cs">
+      <DependentUpon>DetaljiProjekta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetaljiTima.aspx.cs">
+      <DependentUpon>DetaljiTima.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetaljiTima.aspx.designer.cs">
+      <DependentUpon>DetaljiTima.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Djelatnici.aspx.cs">
+      <DependentUpon>Djelatnici.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Djelatnici.aspx.designer.cs">
+      <DependentUpon>Djelatnici.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DodajDjelatnika.aspx.cs">
+      <DependentUpon>DodajDjelatnika.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DodajDjelatnika.aspx.designer.cs">
+      <DependentUpon>DodajDjelatnika.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DodajKlijenta.aspx.cs">
+      <DependentUpon>DodajKlijenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DodajKlijenta.aspx.designer.cs">
+      <DependentUpon>DodajKlijenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DodajProjekt.aspx.cs">
+      <DependentUpon>DodajProjekt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DodajProjekt.aspx.designer.cs">
+      <DependentUpon>DodajProjekt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DodajTim.aspx.cs">
+      <DependentUpon>DodajTim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DodajTim.aspx.designer.cs">
+      <DependentUpon>DodajTim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Klijenti.aspx.cs">
+      <DependentUpon>Klijenti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Klijenti.aspx.designer.cs">
+      <DependentUpon>Klijenti.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -238,7 +326,26 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Djelatnik.cs" />
+    <Compile Include="Models\Klijent.cs" />
+    <Compile Include="Models\Projekt.cs" />
     <Compile Include="Models\Repozitorij.cs" />
+    <Compile Include="Models\SatiNaProjektu.cs" />
+    <Compile Include="Models\Satnica.cs" />
+    <Compile Include="Models\Tim.cs" />
+    <Compile Include="MojTim.aspx.cs">
+      <DependentUpon>MojTim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MojTim.aspx.designer.cs">
+      <DependentUpon>MojTim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profil.aspx.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profil.aspx.designer.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Projekti.aspx.cs">
       <DependentUpon>Projekti.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -246,7 +353,49 @@
     <Compile Include="Projekti.aspx.designer.cs">
       <DependentUpon>Projekti.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PromijeniSifru.aspx.cs">
+      <DependentUpon>PromijeniSifru.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PromijeniSifru.aspx.designer.cs">
+      <DependentUpon>PromijeniSifru.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Timovi.aspx.cs">
+      <DependentUpon>Timovi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Timovi.aspx.designer.cs">
+      <DependentUpon>Timovi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\DjelatnikUserControl.ascx.cs">
+      <DependentUpon>DjelatnikUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Controls\DjelatnikUserControl.ascx.designer.cs">
+      <DependentUpon>DjelatnikUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\KlijentUserControl.ascx.cs">
+      <DependentUpon>KlijentUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Controls\KlijentUserControl.ascx.designer.cs">
+      <DependentUpon>KlijentUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\ProjektUserControl.ascx.cs">
+      <DependentUpon>ProjektUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Controls\ProjektUserControl.ascx.designer.cs">
+      <DependentUpon>ProjektUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User_Controls\TimUserControl.ascx.cs">
+      <DependentUpon>TimUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Controls\TimUserControl.ascx.designer.cs">
+      <DependentUpon>TimUserControl.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -267,12 +416,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{d66f8800-14df-42ae-8899-d927eba8da9d}</Project>
-      <Name>Utilities</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -9,9 +9,6 @@
     </asp:ContentPlaceHolder>
 
 	<link href="Content/bootstrap.min.css" rel="stylesheet" />
-<%--	<link
-		rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" />--%>
 	<link
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=Roboto:300,400" />
@@ -74,7 +71,7 @@
 										<div
 											class="dropdown-menu shadow dark-background dropdown-menu-right animated--grow-in"
 											role="menu">
-											<asp:LinkButton runat="server" CssClass="dropdown-item" ID="LinkButton1" OnClick="BtnLogout_Click">
+											<asp:LinkButton runat="server" CssClass="dropdown-item" ID="btnProfil" OnClick="BtnProfil_Click">
 												<i class="fas fa-user fa-sm fa-fw mr-2 text-white">&nbsp;</i>
 												<span class="text-white">Profil</span>
 											</asp:LinkButton>
@@ -98,18 +95,10 @@
 						</asp:ContentPlaceHolder>
 					</div>
 				</div>
-				<footer class="light-gray-background sticky-footer text-white">
-					<div class="container my-auto light">
-						<div class="text-center my-auto copyright">
-							<span>Copyright © Patrik Badanjak 2020</span>
-						</div>
-					</div>
-				</footer>
 			</div>
 		</div>
 		<script src="Scripts/jquery-3.0.0.min.js"></script>
 		<script src="Scripts/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 		<script src="Scripts/theme.js"></script>
     </form>
 </body>

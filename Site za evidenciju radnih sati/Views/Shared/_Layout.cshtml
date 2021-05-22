@@ -1,0 +1,102 @@
+﻿@if ( Session["djelatnik"] == null )
+{
+	Response.Redirect("Login");
+}
+
+@using Site_za_administraciju.Models;
+
+@{
+	Djelatnik djelatnik = Session["djelatnik"] as Djelatnik;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion dark-background p-0">
+			<div class="container-fluid d-flex flex-column p-0">
+				<a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"></a>
+				<hr class="sidebar-divider my-2" />
+				<ul class="nav navbar-nav text-light" id="accordionSidebar" runat="server">
+					@if ( djelatnik.Tip != TipDjelatnika.Direktor )
+					{
+						<li class="nav-item" role="presentation">
+							@Html.ActionLink(linkText: "Početna", actionName: "Index", controllerName: "Home", routeValues: new { }, htmlAttributes: new { @class = "nav-link" })
+						</li>
+						<li class="nav-item" role="presentation">
+							@Html.ActionLink(linkText: "Pregled rada", actionName: "Index", controllerName: "PregledRada", routeValues: new { }, htmlAttributes: new { @class = "nav-link" })
+						</li>
+					}
+					@if ( djelatnik.Tip == TipDjelatnika.Direktor || djelatnik.Tip == TipDjelatnika.VoditeljTima )
+					{
+						<li class="nav-item" role="presentation">
+							@Html.ActionLink(linkText: "Potvrda satnica", actionName: "Index", controllerName: "PotvrdaSatnica", routeValues: new { }, htmlAttributes: new { @class = "nav-link" })
+						</li>
+					}
+					@if ( djelatnik.Tip == TipDjelatnika.Direktor )
+					{
+						<li class="nav-item" role="presentation">
+							@Html.ActionLink(linkText: "Projekti", actionName: "Index", controllerName: "Projekti", routeValues: new { }, htmlAttributes: new { @class = "nav-link" })
+						</li>
+					}
+				</ul>
+			</div>
+		</nav>
+		<div class="d-flex flex-column" id="content-wrapper">
+			<div id="content light-gray-background">
+				<nav class="navbar navbar-dark navbar-expand light-gray-background shadow mb-4 topbar static-top">
+					<div class="container-fluid">
+						<button class="btn btn-link d-md-none rounded-circle mr-3"
+								id="sidebarToggleTop"
+								type="button">
+							<i class="fas fa-bars"></i>
+						</button>
+						<ul class="nav navbar-nav flex-nowrap ml-auto">
+							<li class="nav-item dropdown no-arrow" role="presentation">
+								<div class="nav-item dropdown no-arrow">
+									<a class="dropdown-toggle nav-link"
+									   data-toggle="dropdown"
+									   aria-expanded="false"
+									   href="#">
+										<span class="d-none d-lg-inline mr-2 text-white"
+											  id="lblFirstLastName"
+											  >@djelatnik.ToString()</span>
+										<img src="~/Content/assets/img/user_pic.svg" class="rounded-circle profile-picture" />
+									</a>
+									<div class="dropdown-menu shadow dark-background dropdown-menu-right animated--grow-in" role="menu">
+										<div class="d-flex justify-content-center align-items-center">
+											<i class="fas fa-user fa-sm fa-fw text-white ml-3">&nbsp;</i>
+											@Html.ActionLink(linkText: "Profil", actionName: "ShowProfil", controllerName: "Home", routeValues: null, htmlAttributes: new { @class = "dropdown-item text-white" })
+										</div>
+										<div class="dropdown-divider"></div>
+										<div class="d-flex justify-content-center align-items-center">
+											<i class="fas fa-sign-out-alt fa-sm fa-fw text-white ml-3">&nbsp;</i>
+											@Html.ActionLink(linkText: "Log out", actionName: "Logout", controllerName: "Home", routeValues: null, htmlAttributes: new { @class = "dropdown-item text-white" })
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<div class="container-fluid">
+					<div class="d-sm-flex justify-content-between align-items-center mb-4">
+						@RenderSection("pageTitle", false)
+					</div>
+					@RenderBody()
+				</div>
+			</div>
+		</div>
+	</div>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

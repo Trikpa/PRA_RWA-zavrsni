@@ -23,20 +23,32 @@ namespace Site_za_administraciju.Models
 		public string Email { get; set; }
 		public string Lozinka { get; set; }
 		public DateTime DatumZaposlenja { get; set; }
-		public string Tim { get; set; }
+		public Tim Tim { get; set; } = null;
 
-		public Djelatnik( int idDjelatnik, string ime, string prezime, int tip, string email, string lozinka, DateTime datumZaposlenja, string tim )
+		public Djelatnik( string ime, string prezime, int tip, string email, DateTime datumZaposlenja, Tim tim )
 		{
-			IDDjelatnik = idDjelatnik;
 			Ime = ime;
 			Prezime = prezime;
 			Tip = (TipDjelatnika)tip;
 			Email = email;
-			Lozinka = lozinka;
 			DatumZaposlenja = datumZaposlenja;
 			Tim = tim;
 		}
 
+		public Djelatnik( string ime, string prezime, int tip, string email, string lozinka, DateTime datumZaposlenja, Tim tim )
+			: this(ime, prezime, tip, email, datumZaposlenja, tim)
+				=> Lozinka = lozinka;
+
+		public Djelatnik( int idDjelatnik, string ime, string prezime, int tip, string email, DateTime datumZaposlenja, Tim tim )
+			: this(ime, prezime, tip, email, datumZaposlenja, tim)
+				=> IDDjelatnik = idDjelatnik;
+
+		public Djelatnik( int idDjelatnik, string ime, string prezime, int tip, string email, string lozinka, DateTime datumZaposlenja, Tim tim )
+			: this(idDjelatnik, ime, prezime, tip, email, datumZaposlenja, tim)
+				=> Lozinka = lozinka;
+
 		public override string ToString() => $"{Ime} {Prezime}";
+		public override bool Equals( object obj ) => IDDjelatnik.Equals(( obj as Djelatnik ).IDDjelatnik);
+		public override int GetHashCode() => IDDjelatnik.GetHashCode();
 	}
 }

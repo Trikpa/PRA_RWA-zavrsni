@@ -1,0 +1,40 @@
+﻿@model Site_za_evidenciju_radnih_sati.Models.ChangePasswordViewModel
+
+@{
+	ViewBag.Title = "Promjena šifre";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pageTitle {
+	<h3 class="text-white mb-0">Promjena šifre</h3>
+}
+
+@using ( Html.BeginForm(actionName: "PromjenaSifre", controllerName: "Home", method: FormMethod.Post) )
+{
+	<div class="form-group row mt-4 mb-3">
+		@Html.Label(expression: "Nova lozinka", htmlAttributes: new { @class = "col-sm-3 col-form-label text-red" })
+		<div class="col-sm-5  d-flex align-items-center">
+			@Html.TextBoxFor(pwd => pwd.NewPassword, new { @class = "form-control", type = "password" })
+		</div>
+		<div class="col-sm-4">
+			@Html.ValidationMessageFor(pwd => pwd.NewPassword, "", new { @class = "text-danger" })
+		</div>
+	</div>
+	<div class="form-group row">
+		@Html.Label(expression: "Nova lozinka ponovno", htmlAttributes: new { @class = "col-sm-3 col-form-label text-red" })
+		<div class="col-sm-5  d-flex align-items-center">
+			@Html.TextBoxFor(pwd => pwd.ConfirmPassword, new { @class = "form-control", type = "password" })
+		</div>
+		<div class="col-sm-4">
+			@Html.ValidationMessageFor(pwd => pwd.ConfirmPassword, "", new { @class = "text-danger" })
+		</div>
+	</div>
+	<div class="form-group row mt-4">
+		<div class="col-sm-3">
+			<input type="submit" value="Promijeni šifru" class="btn btn-info" />
+		</div>
+		<div class="col-sm-3">
+			@Html.ActionLink(linkText: "Natrag", actionName: "ShowProfil", routeValues: null, htmlAttributes: new { @class = "btn btn-secondary" })
+		</div>
+	</div>
+}

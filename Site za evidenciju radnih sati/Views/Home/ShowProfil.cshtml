@@ -1,0 +1,59 @@
+﻿@using Site_za_administraciju.Models
+
+@{
+	ViewBag.Title = "Profil";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	Djelatnik djelatnik = Session["djelatnik"] as Djelatnik;
+}
+
+@section pageTitle {
+	<h3 class="text-white mb-0">Profil</h3>
+}
+
+<div class="row">
+	<div class="col-md-6 mt-4 mb-4 dark-background rounded">
+		<div class="form-group row my-4">
+			@Html.Label(expression: "Ime", htmlAttributes: new { @class="col-sm-2 col-form-label text-red" })
+			<div class="col-sm-9 d-flex align-items-center">
+				@Html.Label(expression: djelatnik.Ime, htmlAttributes: new { @class = "col-form-label text-white font-weight-bold" })
+			</div>
+		</div>
+		<div class="form-group row my-4">
+			@Html.Label(expression: "Prezime", htmlAttributes: new { @class = "col-sm-2 col-form-label text-red" })
+			<div class="col-sm-9 d-flex align-items-center">
+				@Html.Label(expression: djelatnik.Prezime, htmlAttributes: new { @class = "col-form-label text-white font-weight-bold" })
+			</div>
+		</div>
+		<div class="form-group row my-4">
+			@Html.Label(expression: "Tip djelatnika", htmlAttributes: new { @class = "col-sm-2 col-form-label text-red" })
+			<div class="col-sm-9 d-flex align-items-center">
+				@Html.Label(expression: djelatnik.Tip.ToString(), htmlAttributes: new { @class = "col-form-label text-white font-weight-bold" })
+			</div>
+		</div>
+		<div class="form-group row my-4">
+			@Html.Label(expression: "Email", htmlAttributes: new { @class = "col-sm-2 col-form-label text-red" })
+			<div class="col-sm-9 d-flex align-items-center">
+				@Html.Label(expression: djelatnik.Email, htmlAttributes: new { @class = "col-form-label text-white font-weight-bold" })
+			</div>
+		</div>
+		<div class="form-group row my-4">
+			@Html.Label(expression: "Datum zaposlenja", htmlAttributes: new { @class = "col-sm-2 col-form-label text-red" })
+			<div class="col-sm-9 d-flex align-items-center">
+				@Html.Label(expression: djelatnik.DatumZaposlenja.ToShortDateString(), htmlAttributes: new { @class = "col-form-label text-white font-weight-bold" })
+			</div>
+		</div>
+		<div class="form-group row my-4">
+			@Html.Label(expression: "Tim", htmlAttributes: new { @class = "col-sm-2 col-form-label text-red" })
+			<div class="col-sm-9 d-flex align-items-center">
+				@Html.Label(expression: djelatnik.Tim.Naziv, htmlAttributes: new { @class = "col-form-label text-white font-weight-bold" })
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<div class="col-sm-4">
+				@Html.ActionLink(linkText: "Promijeni šifru", actionName: "PromjenaSifre", routeValues: null, htmlAttributes: new { @class = "btn btn-secondary" })
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+	</div>
+</div>

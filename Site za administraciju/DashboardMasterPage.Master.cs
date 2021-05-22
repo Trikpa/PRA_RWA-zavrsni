@@ -10,9 +10,13 @@ namespace Site_za_administraciju
 {
 	public partial class DashboardMasterPage : System.Web.UI.MasterPage
 	{
-		protected void OnPreLoad( object sender, EventArgs e )
-		{
-		}
+		public HyperLink navItemProjekti { get; set; }
+		public HyperLink navItemMojTim { get; set; }
+		public HyperLink navItemIzvjestaji { get; set; }
+		public HyperLink navItemTimovi { get; set; }
+		public HyperLink navItemDjelatnici { get; set; }
+		public HyperLink navItemKlijenti { get; set; }
+
 		protected void Page_Load( object sender, EventArgs e )
 		{
 			Djelatnik djelatnik = Session["djelatnik"] as Djelatnik;
@@ -21,6 +25,18 @@ namespace Site_za_administraciju
 
 			EditMenu(djelatnik.Tip);
 			lblFirstLastName.InnerText = djelatnik.ToString();
+
+			SetReferencesForNavItems();
+		}
+
+		private void SetReferencesForNavItems()
+		{
+			navItemProjekti = navitemProjekti;
+			navItemMojTim = navitemMojTim;
+			navItemIzvjestaji = navitemIzvjestaji;
+			navItemTimovi = navitemTimovi;
+			navItemDjelatnici = navitemDjelatnici;
+			navItemKlijenti = navitemKlijenti;
 		}
 
 		private void EditMenu( TipDjelatnika tip )
@@ -45,5 +61,7 @@ namespace Site_za_administraciju
 			ViewState.Clear();
 			Response.Redirect("Login.aspx");
 		}
+
+		protected void BtnProfil_Click( object sender, EventArgs e ) => Response.Redirect("Profil.aspx");
 	}
 }

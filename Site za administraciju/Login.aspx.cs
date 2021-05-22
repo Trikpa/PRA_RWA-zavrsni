@@ -14,12 +14,9 @@ namespace Site_za_administraciju
 		public string email { get; set; }
 		public string password { get; set; }
 
-		private const string SITE_ZA_ADMINISTRACIJU = "administracija";
-		private const string SITE_ZA_EVIDENCIJU = "evidencija";
-
 		protected void Page_Load( object sender, EventArgs e )
 		{
-
+			
 		}
 
 		protected void BtnLogin_Click( object sender, EventArgs e )
@@ -42,24 +39,17 @@ namespace Site_za_administraciju
 			if ( HasPermission(djelatnik.Tip) )
 				LoginUser(djelatnik);
 			else
-				DisplayErrorMessage("You don't have permission to enter the selected site");
+				DisplayErrorMessage("You don't have permission to enter this site");
 		}
 
 		private void LoginUser( Djelatnik djelatnik )
 		{
 			if ( cbRememberMe.Checked )
 				CreateEmailPasswordCookies();
+
 			Session["djelatnik"] = djelatnik;
 
-			switch ( ddlOdabraniSite.SelectedValue )
-			{
-				case SITE_ZA_EVIDENCIJU:
-					//Response.Redirect("~Projekti.aspx");
-					break;
-				case SITE_ZA_ADMINISTRACIJU:
-					Response.Redirect("Projekti.aspx");
-					break;
-			}
+			Response.Redirect("Projekti.aspx");
 		}
 
 		private void DisplayErrorMessage( string message )
@@ -70,16 +60,8 @@ namespace Site_za_administraciju
 
 		private bool HasPermission( TipDjelatnika tip )
 		{
-			if ( ddlOdabraniSite.SelectedValue == SITE_ZA_ADMINISTRACIJU )
-			{
-				if ( tip == TipDjelatnika.Direktor || tip == TipDjelatnika.VoditeljTima )
-					return true;
-
-				return false;
-			}
-			if ( ddlOdabraniSite.SelectedValue == SITE_ZA_EVIDENCIJU )
-				if ( tip != TipDjelatnika.Neaktivan )
-					return true;
+			if ( tip == TipDjelatnika.Direktor || tip == TipDjelatnika.VoditeljTima )
+				return true;
 
 			return false;
 		}

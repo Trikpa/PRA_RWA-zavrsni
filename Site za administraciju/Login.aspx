@@ -18,6 +18,9 @@
 						<h1 class="mt-4 mb-2 display-6" id="welcome-text">Dobrodošli natrag!</h1>
 					</div>
 					<div>
+						<h6 class="mt-1 mb-2 display-6 text-red font-weight-light">Site za administraciju i izvještavanje</h6>
+					</div>
+					<div>
 						<asp:Label Text="" runat="server" ID="errorMessage" CssClass="text-danger" Visible="false" />
 					</div>
 					<div class="form-group w-50 mt-2 mb-3 d-flex flex-row">
@@ -47,17 +50,11 @@
 							Font-Size="Large"
 							Text="*" />
 					</div>
-					<div class="form-check w-50">
+					<div class="form-check w-50 mb-5">
 						<asp:CheckBox ID="cbRememberMe" runat="server"
 							Text="Zapamti me"
 							CssClass="form-check-input text-white"
 							/>
-					</div>
-					<div class="form-group w-50 mt-5">
-						<asp:DropDownList runat="server" CssClass="form-control" ID="ddlOdabraniSite">
-							<asp:ListItem Text="Site za administraciju i izvještavanje" Selected="True" Value="administracija" />
-							<asp:ListItem Text="Site za evidenciju radnih sati" Value="evidencija" />
-						</asp:DropDownList>
 					</div>
 					<div class="form-group w-50 mb-3">
 						<asp:Button ID="btnLogin" runat="server" Text="Prijava" CssClass="btn-block loginButton" OnClick="BtnLogin_Click" />
