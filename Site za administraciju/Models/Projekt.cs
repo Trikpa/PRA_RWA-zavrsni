@@ -25,8 +25,10 @@ namespace Site_za_administraciju.Models
 
 		public Projekt( int idProjekt, string naziv, DateTime datumOtvaranja, Djelatnik voditelj, Klijent klijent, string opisProjekta )
 			: this(naziv, datumOtvaranja, voditelj, klijent, opisProjekta)
-			=> IDProjekt = idProjekt;
+				=> IDProjekt = idProjekt;
 
 		public override string ToString() => $"{Naziv} ({Klijent.Naziv})";
+		public override bool Equals( object obj ) => obj is Projekt p && p.IDProjekt.Equals(this.IDProjekt);
+		public override int GetHashCode() => IDProjekt.GetHashCode();
 	}
 }

@@ -24,6 +24,7 @@ namespace Site_za_evidenciju_radnih_sati
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.min.css",
+					  "~/Content/assets/fonts/fontawesome-all.min.css",
 					  "~/Content/login.css"));
 		}
 	}

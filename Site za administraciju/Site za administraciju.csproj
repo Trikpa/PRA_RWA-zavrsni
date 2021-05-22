@@ -329,6 +329,8 @@
     <Compile Include="Models\Klijent.cs" />
     <Compile Include="Models\Projekt.cs" />
     <Compile Include="Models\Repozitorij.cs" />
+    <Compile Include="Models\SatiNaProjektu.cs" />
+    <Compile Include="Models\Satnica.cs" />
     <Compile Include="Models\Tim.cs" />
     <Compile Include="MojTim.aspx.cs">
       <DependentUpon>MojTim.aspx</DependentUpon>

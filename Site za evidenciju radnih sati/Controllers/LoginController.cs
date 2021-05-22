@@ -4,39 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Site_za_administraciju.Models;
+using Site_za_evidenciju_radnih_sati.Models;
 
 namespace Site_za_evidenciju_radnih_sati.Controllers
 {
     public class LoginController : Controller
     {
-		public ActionResult Index()
+		public ActionResult Login()
 		{
-			string btnLoginClick = Request["btnLogin"];
-			if ( btnLoginClick == "Login" )
-			{
-				string email = Request["tbUsername"];
-				string password = Request["tbPassword"];
-
-				CheckUserInfo(email, password);
-			}
-
 			return View();
 		}
-
-		private void CheckUserInfo( string email, string password )
+		
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Login( LoginViewModel user )
 		{
-			Djelatnik djelatnik = Repozitorij.LoginUser(email, password);
+			if ( ModelState.IsValid )
+			{
+				Djelatnik djelatnik = Repozitorij.LoginUser(user.Email, user.Password);
+				if ( djelatnik != null && HasPermission(djelatnik.Tip) )
+				{
+					Session["djelatnik"] = djelatnik;
+					return RedirectToAction("Index", "Home");
+				}
+				else
+					ViewData["Message"] = "Neispravno korisničko ime ili lozinka ili nemate prava pristupa.";
+			}
 
-			if ( djelatnik != null && HasPermission(djelatnik.Tip) )
-				LoginUser(djelatnik);
-			else
-				RedirectToAction(actionName: "Index", controllerName: "Login");
-		}
-
-		private void LoginUser( Djelatnik djelatnik )
-		{
-			Session["djelatnik"] = djelatnik;
-			RedirectToAction(actionName: "Index", controllerName: "Home");
+			return View(user);
 		}
 
 		private bool HasPermission( TipDjelatnika tip ) => tip != TipDjelatnika.Neaktivan;

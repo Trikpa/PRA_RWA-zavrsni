@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using Microsoft.ApplicationBlocks.Data;
+using Site_za_evidenciju_radnih_sati.Models;
 
 namespace Site_za_administraciju.Models
 {
@@ -603,6 +604,40 @@ namespace Site_za_administraciju.Models
 					datumZaposlenja: DateTime.Parse(row["DatumZaposlenja"].ToString()),
 					tim: t
 				);
+		}
+		public static Satnica GetZadnjaSatnicaDjelatnikaZaProjekt( Djelatnik d, Projekt p )
+		{
+			SqlParameter[] parameters = new SqlParameter[2];
+
+			parameters[0] = new SqlParameter("@IDDjelatnik", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = d.IDDjelatnik
+			};
+
+			parameters[1] = new SqlParameter("@IDProjekt", SqlDbType.Int)
+			{
+				Direction = ParameterDirection.Input,
+				Value = p.IDProjekt
+			};
+
+			DataTable tblSatnica = SqlHelper.ExecuteDataset(cs, CommandType.StoredProcedure,"DohvatiZadnjuSatnicuDjelatnika", parameters).Tables[0];
+
+			if ( tblSatnica.Rows.Count == 0 )
+				return null;
+
+			DataRow row = tblSatnica.Rows[0];
+
+			return new Satnica
+			{
+				IDSatnica = int.Parse(row["IDSatnica"].ToString()),
+				Djelatnik = d,
+				DatumSatnice = DateTime.Parse(row["DatumSatnice"].ToString()),
+				ProjektID = p.IDProjekt,
+				Komentar = row["Komentar"].ToString(),
+				RadniSati = double.Parse(row["RadniSati"].ToString()),
+				PrekovremeniSati = double.Parse(row["PrekovremeniSati"].ToString())
+			};
 		}
 	}
 }

@@ -5,7 +5,7 @@
   --dark-background-color: #222324;
   --light-gray-color: #373737;
   --red-accent-color: #c23b23;
-  --green-button-color: #63c93e;
+  --green-button-color: #62c93e;
   --orange-accent-color: #f39a27;
 }
 
@@ -26,7 +26,11 @@ ul { font-weight: 300; }
 
 .text-red { color: var(--red-accent-color); }
 
+.text-green { color: var(--green-button-color); }
+
 .card { border: none; }
+
+.table td { vertical-align: middle; }
 
 .login-form-dark-rounded-shadow {
   background-color: var(--light-gray-color);
@@ -138,4 +142,8 @@ span.form-check-input {
 
 .btn-red.focus, .btn-red:focus {
 	box-shadow: 0 0 0 .2rem rgba(105,136,228,.5)
+}
+
+button:hover {
+	cursor: pointer !important;
 }
